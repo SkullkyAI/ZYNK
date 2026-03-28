@@ -41,7 +41,7 @@
             background: var(--black);
             color: var(--white);
             font-family: 'Fraunces', Georgia, serif;
-            font-size: 17px;
+            font-size: 19px;
             line-height: 1.75;
             -webkit-font-smoothing: antialiased;
         }
@@ -652,6 +652,45 @@
             padding: 48px 0 60px;
             position: relative;
             z-index: 1;
+        }
+
+        .footer-supporters {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            padding: 28px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 28px;
+        }
+
+        .supporters-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.18em;
+            color: var(--muted);
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .supporters-logos {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+
+        .supporter-logo {
+            height: 28px;
+            width: auto;
+            opacity: 0.75;
+            filter: brightness(1.1);
+            transition: opacity 0.2s;
+        }
+
+        .supporter-logo:hover {
+            opacity: 1;
         }
 
         .footer-inner {
@@ -1280,6 +1319,13 @@
 ════════════════════════════════════════ -->
     <footer>
         <div class="container">
+            <div class="footer-supporters">
+                <span class="supporters-label">Iniciativa apoyada por</span>
+                <div class="supporters-logos">
+                    <img src="assets/talentum-logo.svg" alt="Talentum Program" class="supporter-logo">
+                    <img src="assets/principios-logo.png" alt="Principios" class="supporter-logo">
+                </div>
+            </div>
             <div class="footer-inner">
                 <span class="footer-logo">ZYNK</span>
                 <span class="footer-note">Nota Técnica · 2026 · Política de Vivienda</span>
