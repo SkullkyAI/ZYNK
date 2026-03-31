@@ -9,9 +9,11 @@
     <meta property="og:title" content="La generación sin vivienda — ZYNK Nota Técnica">
     <meta property="og:description" content="Diagnóstico, fallos estructurales y propuestas para ampliar el acceso juvenil a la vivienda en España.">
     <meta property="og:type" content="article">
-    <meta name="twitter:card" content="summary">
+    <meta property="og:image" content="assets/og-image.svg">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="La generación sin vivienda — ZYNK Nota Técnica">
     <meta name="twitter:description" content="Diagnóstico, fallos estructurales y propuestas para ampliar el acceso juvenil a la vivienda en España.">
+    <meta name="twitter:image" content="assets/og-image.svg">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
     <link
         href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Inter:wght@300;400&display=swap"
@@ -279,7 +281,40 @@
             display: flex;
             align-items: center;
             gap: 16px;
-            margin-bottom: 80px;
+            margin-bottom: 20px;
+        }
+
+        .cover-supporters {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 64px;
+        }
+
+        .cover-supporters-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 9px;
+            letter-spacing: 0.18em;
+            color: var(--muted);
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .cover-supporter-link {
+            opacity: 0.55;
+            transition: opacity 0.2s;
+            display: flex;
+            align-items: center;
+        }
+
+        .cover-supporter-link:hover {
+            opacity: 1;
+        }
+
+        .cover-supporter-img {
+            height: 18px;
+            width: auto;
+            filter: brightness(1.2);
         }
 
         .logo {
@@ -1083,7 +1118,8 @@
         .cover-title,
         .cover-subtitle,
         .cover-meta,
-        .cover-authors {
+        .cover-authors,
+        .cover-supporters {
             animation: fadeUp 0.8s ease both;
         }
 
@@ -1144,6 +1180,15 @@
                 <span class="logo">ZYNK</span>
                 <div class="brand-line"></div>
                 <span class="brand-tag">Nota Técnica</span>
+            </div>
+            <div class="cover-supporters">
+                <span class="cover-supporters-label">Con el apoyo de</span>
+                <a href="https://talentumprogram.com/" target="_blank" rel="noopener" class="cover-supporter-link">
+                    <img src="assets/talentum-logo.svg" alt="Talentum Program" class="cover-supporter-img">
+                </a>
+                <a href="https://www.principios.org/" target="_blank" rel="noopener" class="cover-supporter-link">
+                    <img src="assets/principios-logo.png" alt="Principios" class="cover-supporter-img">
+                </a>
             </div>
             <div class="cover-label">Política de Vivienda</div>
             <h1 class="cover-title">La generación<br>sin <em>vivienda</em></h1>
@@ -1638,8 +1683,12 @@
             <div class="footer-supporters">
                 <span class="supporters-label">Iniciativa apoyada por</span>
                 <div class="supporters-logos">
-                    <img src="assets/talentum-logo.svg" alt="Talentum Program" class="supporter-logo">
-                    <img src="assets/principios-logo.png" alt="Principios" class="supporter-logo">
+                    <a href="https://talentumprogram.com/" target="_blank" rel="noopener">
+                        <img src="assets/talentum-logo.svg" alt="Talentum Program" class="supporter-logo">
+                    </a>
+                    <a href="https://www.principios.org/" target="_blank" rel="noopener">
+                        <img src="assets/principios-logo.png" alt="Principios" class="supporter-logo">
+                    </a>
                 </div>
             </div>
             <div class="footer-inner">
