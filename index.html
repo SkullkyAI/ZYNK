@@ -4,7 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZYNK — Nota Técnica</title>
+    <title>La generación sin vivienda — ZYNK Nota Técnica</title>
+    <meta name="description" content="Diagnóstico, fallos estructurales y propuestas para ampliar el acceso juvenil a la vivienda en España.">
+    <meta property="og:title" content="La generación sin vivienda — ZYNK Nota Técnica">
+    <meta property="og:description" content="Diagnóstico, fallos estructurales y propuestas para ampliar el acceso juvenil a la vivienda en España.">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="La generación sin vivienda — ZYNK Nota Técnica">
+    <meta name="twitter:description" content="Diagnóstico, fallos estructurales y propuestas para ampliar el acceso juvenil a la vivienda en España.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
     <link
         href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Inter:wght@300;400&display=swap"
         rel="stylesheet">
@@ -35,15 +43,17 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 72px;
         }
 
         body {
             background: var(--black);
             color: var(--white);
             font-family: 'Inter', Arial, sans-serif;
-            font-size: 19px;
+            font-size: 17px;
             line-height: 1.75;
             -webkit-font-smoothing: antialiased;
+            padding-top: 56px;
         }
 
         /* ── NOISE OVERLAY ── */
@@ -66,13 +76,181 @@
             z-index: 1;
         }
 
+        /* ── NAVBAR ── */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 200;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            padding: 0 32px;
+            background: rgba(8, 10, 12, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .navbar.scrolled {
+            border-bottom-color: var(--border);
+        }
+
+        .nav-logo {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 13px;
+            letter-spacing: 0.28em;
+            color: var(--green);
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            margin-left: auto;
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-links a {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--white);
+        }
+
+        .nav-burger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+            margin-left: auto;
+        }
+
+        .nav-burger span {
+            display: block;
+            width: 22px;
+            height: 1.5px;
+            background: var(--white);
+            transition: transform 0.25s, opacity 0.25s;
+        }
+
+        .nav-burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+        .nav-burger.open span:nth-child(2) { opacity: 0; }
+        .nav-burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+        .nav-mobile {
+            display: none;
+            position: fixed;
+            top: 56px;
+            left: 0;
+            right: 0;
+            background: var(--black-soft);
+            border-bottom: 1px solid var(--border);
+            z-index: 199;
+            padding: 20px 32px 24px;
+        }
+
+        .nav-mobile.open { display: block; }
+
+        .nav-mobile ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .nav-mobile a {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-mobile a:hover { color: var(--white); }
+
+        /* ── SCROLL INDICATOR ── */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 36px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            animation: scrollBounce 2.2s ease-in-out infinite;
+            opacity: 0.5;
+        }
+
+        .scroll-indicator-line {
+            width: 1px;
+            height: 36px;
+            background: linear-gradient(to bottom, transparent, var(--green));
+        }
+
+        .scroll-indicator-dot {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--green);
+        }
+
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* ── REVEAL ON SCROLL ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── SECTION H3 / PROPOSALS INTRO ── */
+        .proposals-intro { margin-bottom: 40px; }
+
+        .section-h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--white);
+        }
+
         /* ── HEADER / COVER ── */
         .cover {
-            min-height: 100vh;
+            min-height: calc(100vh - 56px);
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            padding: 80px 0 72px;
+            padding: 80px 0 100px;
             position: relative;
             overflow: hidden;
             border-bottom: 1px solid var(--border);
@@ -862,24 +1040,13 @@
             background: var(--green);
         }
 
-        /* ── FOOTNOTE ── */
-        .footnote {
-            display: none;
-            font-family: 'DM Mono', monospace;
-            font-size: 11px;
-            color: var(--muted);
-            line-height: 1.6;
-            border-top: 1px solid var(--border);
-            margin-top: 40px;
-            padding-top: 20px;
-        }
-
-        .footnote a {
-            color: var(--blue-bright);
-            text-decoration: none;
-        }
 
         /* ── RESPONSIVE ── */
+        @media (max-width: 700px) {
+            .nav-links { display: none; }
+            .nav-burger { display: flex; }
+        }
+
         @media (max-width: 700px) {
 
             .two-blocks,
@@ -940,6 +1107,32 @@
 
 <body>
 
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="nav-logo">ZYNK</a>
+        <ul class="nav-links">
+            <li><a href="#ideas">Ideas clave</a></li>
+            <li><a href="#resumen">Resumen</a></li>
+            <li><a href="#diagnostico">Diagnóstico</a></li>
+            <li><a href="#analisis">Análisis</a></li>
+            <li><a href="#propuestas">Propuestas</a></li>
+            <li><a href="#conclusion">Conclusión</a></li>
+        </ul>
+        <button class="nav-burger" id="navBurger" aria-label="Menú">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+    <div class="nav-mobile" id="navMobile">
+        <ul>
+            <li><a href="#ideas">Ideas clave</a></li>
+            <li><a href="#resumen">Resumen</a></li>
+            <li><a href="#diagnostico">Diagnóstico</a></li>
+            <li><a href="#analisis">Análisis</a></li>
+            <li><a href="#propuestas">Propuestas</a></li>
+            <li><a href="#conclusion">Conclusión</a></li>
+        </ul>
+    </div>
+
     <!-- ════════════════════════════════════════
      COVER
 ════════════════════════════════════════ -->
@@ -985,13 +1178,17 @@
                     <li><a href="https://www.linkedin.com/in/d%C3%ADdac-s%C3%A1nchez-olaya-31a2641b1/" target="_blank" rel="noopener" class="author-link">Dídac Sánchez Olaya</a><span class="author-sep">/</span></li>
                 </ul>
             </div>
-            <a href="nota%20t%C3%A9cnica%20ZYNK.pdf" target="_blank" rel="noopener" class="cover-pdf-btn">
+            <a href="nota-tecnica-zynk.pdf" target="_blank" rel="noopener" class="cover-pdf-btn">
                 <svg width="14" height="16" viewBox="0 0 14 16" fill="var(--green)" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8 0H2C0.9 0 0 0.9 0 2v12c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6L8 0zm0 1.5L12.5 6H8V1.5zM2 14V2h5v5h5v7H2z"/>
                     <path d="M3.5 9h7v1h-7zM3.5 11h5v1h-5z"/>
                 </svg>
                 Leer nota técnica completa
             </a>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-indicator-line"></div>
+            <div class="scroll-indicator-dot"></div>
         </div>
     </div>
 
@@ -1000,8 +1197,8 @@
 ════════════════════════════════════════ -->
     <section id="ideas">
         <div class="container">
-            <div class="section-header">
-                <span class="section-num">II</span>
+            <div class="section-header reveal">
+                <span class="section-num">I</span>
                 <div class="section-title-block">
                     <div class="section-kicker">Ideas Clave</div>
                     <h2>Tres tesis<br>centrales</h2>
@@ -1009,7 +1206,7 @@
             </div>
 
             <div class="ideas-grid">
-                <div class="idea-card">
+                <div class="idea-card reveal">
                     <span class="idea-index">01 — Desigualdad intergeneracional</span>
                     <p class="idea-title">La vivienda juvenil en España. De derecho constitucional a privilegio ligado a
                         la herencia familiar</p>
@@ -1020,7 +1217,7 @@
                         privilegio vinculado cada vez más al apoyo patrimonial familiar que al esfuerzo laboral
                         individual.</p>
                 </div>
-                <div class="idea-card">
+                <div class="idea-card reveal">
                     <span class="idea-index">02 — Efectos del control de precios</span>
                     <p class="idea-title">El control de precios impulsa el auge del alquiler de temporada</p>
                     <p class="idea-body">En las zonas de mercado residencial tensionado (ZMRT), donde se controla el
@@ -1030,7 +1227,7 @@
                         el alquiler de temporada. Como consecuencia, se reduce la oferta disponible de alquiler
                         residencial habitual, sin resolver la escasez estructural de la vivienda.</p>
                 </div>
-                <div class="idea-card">
+                <div class="idea-card reveal">
                     <span class="idea-index">03 — Solución estructural</span>
                     <p class="idea-title">Garantías públicas para cubrir el 20%: la clave para facilitar hipotecas</p>
                     <p class="idea-body">El principal cuello de botella para los jóvenes no es solo la renta mensual,
@@ -1050,8 +1247,8 @@
 ════════════════════════════════════════ -->
     <section id="resumen">
         <div class="container">
-            <div class="section-header">
-                <span class="section-num">III</span>
+            <div class="section-header reveal">
+                <span class="section-num">II</span>
                 <div class="section-title-block">
                     <div class="section-kicker">Resumen Ejecutivo</div>
                     <h2>El diagnóstico<br>en síntesis</h2>
@@ -1111,8 +1308,8 @@
 ════════════════════════════════════════ -->
     <section id="diagnostico">
         <div class="container">
-            <div class="section-header">
-                <span class="section-num">IV</span>
+            <div class="section-header reveal">
+                <span class="section-num">III</span>
                 <div class="section-title-block">
                     <div class="section-kicker">Introducción y Diagnóstico</div>
                     <h2>Un sistema que<br>condena a<br>una generación</h2>
@@ -1131,7 +1328,7 @@
                 supera ampliamente los niveles considerados razonables y dificulta la posibilidad de ahorro en la futura
                 compra de una vivienda en propiedad.</p>
 
-            <div class="stat-banner">
+            <div class="stat-banner reveal">
                 <div class="stat-cell">
                     <span class="stat-num">+30</span>
                     <span class="stat-desc">Años: edad media<br>de emancipación en España</span>
@@ -1161,7 +1358,7 @@
                 <div class="divider-line"></div>
             </div>
 
-            <h3 style="font-family:'Syne',sans-serif; margin-bottom:16px;">Metodología</h3>
+            <h3 class="section-h3">Metodología</h3>
             <p>El proyecto de investigación comenzó en octubre de 2025 con el objetivo de identificar los principales
                 retos en materia de acceso a la vivienda. El análisis de las propuestas de la Ley Nacional de
                 Vivienda, propuestas regulatorias de otros países con resultados más positivos,
@@ -1173,14 +1370,14 @@
                 AVVA Andalucía, APCE y ASVAL, junto con perfiles vinculados a la gestión pública.</p>
 
             <div class="hypotheses">
-                <div class="hypo">
+                <div class="hypo reveal">
                     <span class="hypo-tag">H1 — Zonas tensionadas</span>
                     <p>En mercados residenciales tensionados, la combinación de límites de precios e inseguridad
                         jurídica reduce la rentabilidad esperada del alquiler residencial, incentivando la salida de
                         vivienda hacia modalidades menos reguladas o fuera del mercado, y agravando la escasez de oferta
                         disponible para los jóvenes.</p>
                 </div>
-                <div class="hypo">
+                <div class="hypo reveal">
                     <span class="hypo-tag">H2 — Barrera de entrada</span>
                     <p>Para una parte significativa de los jóvenes, la principal barrera de acceso a la compra de
                         vivienda no es la capacidad de pago mensual, sino la imposibilidad de acumular el capital
@@ -1196,8 +1393,8 @@
 ════════════════════════════════════════ -->
     <section id="analisis">
         <div class="container">
-            <div class="section-header">
-                <span class="section-num">V</span>
+            <div class="section-header reveal">
+                <span class="section-num">IV</span>
                 <div class="section-title-block">
                     <div class="section-kicker">Ideas relacionadas con las hipótesis</div>
                     <h2>Cinco ejes<br>de análisis</h2>
@@ -1205,7 +1402,7 @@
             </div>
 
             <!-- 1 -->
-            <div class="analysis-item">
+            <div class="analysis-item reveal">
                 <span class="analysis-num">Eje 01 · Zonas Tensionadas</span>
                 <p class="analysis-title">Análisis de las Zonas Tensionadas: Impacto en la Oferta y Propuestas para la
                     Estabilización del Mercado</p>
@@ -1233,7 +1430,7 @@
             </div>
 
             <!-- 2 -->
-            <div class="analysis-item">
+            <div class="analysis-item reveal">
                 <span class="analysis-num">Eje 02 · Marco jurídico</span>
                 <p class="analysis-title">El gran enemigo del mercado de la vivienda: la inseguridad jurídica</p>
                 <p>Uno de los mayores enemigos del mercado de la vivienda es la inseguridad jurídica y una falta de
@@ -1254,7 +1451,7 @@
             </div>
 
             <!-- 3 -->
-            <div class="analysis-item">
+            <div class="analysis-item reveal">
                 <span class="analysis-num">Eje 03 · Capital inicial</span>
                 <p class="analysis-title">El verdadero cuello de botella para los jóvenes: la entrada y la escasez de
                     vivienda</p>
@@ -1276,7 +1473,7 @@
             </div>
 
             <!-- 4 -->
-            <div class="analysis-item">
+            <div class="analysis-item reveal">
                 <span class="analysis-num">Eje 04 · Rol del Estado</span>
                 <p class="analysis-title">El papel del Estado: ¿cómo puede la política pública crear las condiciones
                     para ampliar el acceso a la vivienda?</p>
@@ -1297,7 +1494,7 @@
             </div>
 
             <!-- 5 -->
-            <div class="analysis-item">
+            <div class="analysis-item reveal">
                 <span class="analysis-num">Eje 05 · Oferta asequible</span>
                 <p class="analysis-title">La oferta de vivienda: ¿Cómo movilizar al sector privado para ampliar el
                     parque asequible?</p>
@@ -1322,21 +1519,21 @@
 ════════════════════════════════════════ -->
     <section id="propuestas">
         <div class="container">
-            <div class="section-header">
-                <span class="section-num">VI</span>
+            <div class="section-header reveal">
+                <span class="section-num">V</span>
                 <div class="section-title-block">
                     <div class="section-kicker">Propuestas</div>
                     <h2>Tres líneas<br>de actuación</h2>
                 </div>
             </div>
 
-            <p style="margin-bottom:40px;">Las conclusiones de esta investigación apuntan a una realidad por todos
+            <p class="proposals-intro">Las conclusiones de esta investigación apuntan a una realidad por todos
                 conocida: la crisis de la vivienda en España ha trascendido lo económico para consolidarse como una
                 fractura patrimonial de carácter sistémico. La falta de acceso a la vivienda ya no responde únicamente a
                 variables económicas, sino a un modelo que está consolidando una desigualdad intergeneracional
                 creciente.</p>
 
-            <div class="proposal-card">
+            <div class="proposal-card reveal">
                 <div class="prop-num-col">01</div>
                 <div class="prop-content">
                     <span class="prop-badge">Incentivos y seguridad jurídica</span>
@@ -1350,7 +1547,7 @@
                 </div>
             </div>
 
-            <div class="proposal-card">
+            <div class="proposal-card reveal">
                 <div class="prop-num-col">02</div>
                 <div class="prop-content">
                     <span class="prop-badge">Capital inicial</span>
@@ -1364,7 +1561,7 @@
                 </div>
             </div>
 
-            <div class="proposal-card">
+            <div class="proposal-card reveal">
                 <div class="prop-num-col">03</div>
                 <div class="prop-content">
                     <span class="prop-badge">Colaboración público-privada</span>
@@ -1392,15 +1589,15 @@
 ════════════════════════════════════════ -->
     <section id="conclusion">
         <div class="container">
-            <div class="section-header">
-                <span class="section-num">VII</span>
+            <div class="section-header reveal">
+                <span class="section-num">VI</span>
                 <div class="section-title-block">
                     <div class="section-kicker">Conclusión</div>
                     <h2>Un pacto<br>intergeneracional</h2>
                 </div>
             </div>
 
-            <div class="conclusion-body">
+            <div class="conclusion-body reveal">
                 <p>La investigación llevada a cabo nos permite concluir que la crisis habitacional de la juventud en
                     España no representa un desafío financiero coyuntural, sino un <strong>fallo estructural que
                         compromete el contrato social intergeneracional</strong>.</p>
@@ -1453,7 +1650,7 @@
     </footer>
 
     <!-- FAB: acceso permanente al PDF -->
-    <a href="nota%20t%C3%A9cnica%20ZYNK.pdf" target="_blank" rel="noopener" class="fab-pdf" id="fabPdf" aria-label="Leer nota técnica en PDF">
+    <a href="nota-tecnica-zynk.pdf" target="_blank" rel="noopener" class="fab-pdf" id="fabPdf" aria-label="Leer nota técnica en PDF">
         <svg width="13" height="15" viewBox="0 0 14 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path d="M8 0H2C0.9 0 0 0.9 0 2v12c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6L8 0zm0 1.5L12.5 6H8V1.5zM2 14V2h5v5h5v7H2z"/>
             <path d="M3.5 9h7v1h-7zM3.5 11h5v1h-5z"/>
@@ -1463,17 +1660,55 @@
 
     <script>
         (function () {
-            var fab = document.getElementById('fabPdf');
-            var cover = document.querySelector('.cover');
+            var navbar  = document.getElementById('navbar');
+            var fab     = document.getElementById('fabPdf');
+            var burger  = document.getElementById('navBurger');
+            var mobile  = document.getElementById('navMobile');
+            var cover   = document.querySelector('.cover');
+            var sections = document.querySelectorAll('section[id]');
+            var navAnchors = document.querySelectorAll('.nav-links a, .nav-mobile a');
+
+            // Navbar scrolled + FAB visibility
             function onScroll() {
+                var y = window.scrollY;
+                navbar.classList.toggle('scrolled', y > 20);
                 var threshold = cover ? cover.offsetHeight * 0.6 : 400;
-                if (window.scrollY > threshold) {
-                    fab.classList.add('fab-visible');
-                } else {
-                    fab.classList.remove('fab-visible');
-                }
+                fab.classList.toggle('fab-visible', y > threshold);
+
+                // Active nav link
+                var current = '';
+                sections.forEach(function (s) {
+                    if (s.offsetTop - 80 <= y) current = s.id;
+                });
+                navAnchors.forEach(function (a) {
+                    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+                });
             }
             window.addEventListener('scroll', onScroll, { passive: true });
+
+            // Burger menu
+            burger.addEventListener('click', function () {
+                burger.classList.toggle('open');
+                mobile.classList.toggle('open');
+            });
+            mobile.querySelectorAll('a').forEach(function (a) {
+                a.addEventListener('click', function () {
+                    burger.classList.remove('open');
+                    mobile.classList.remove('open');
+                });
+            });
+
+            // Reveal on scroll
+            var reveals = document.querySelectorAll('.reveal');
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+            reveals.forEach(function (el) { observer.observe(el); });
         })();
     </script>
 
