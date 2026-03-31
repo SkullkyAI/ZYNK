@@ -21,8 +21,7 @@
     <meta name="twitter:description"
         content="Diagnóstico, fallos estructurales y propuestas para ampliar el acceso juvenil a la vivienda en España.">
     <meta name="twitter:image" content="https://zynk-tank.vercel.app/assets/og-image.png">
-    <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link
         href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Inter:wght@300;400&display=swap"
         rel="stylesheet">
@@ -674,7 +673,7 @@
             font-family: 'DM Mono', monospace;
             font-size: 11px;
             letter-spacing: 0.15em;
-            color: var(--muted);
+            color: rgba(240, 242, 240, 0.55);
             margin-bottom: 12px;
             display: block;
         }
@@ -867,32 +866,25 @@
         }
 
         .stat-num {
-            font-family: 'Syne', sans-serif;
-            font-weight: 800;
-            font-size: 48px;
+            font-family: 'DM Mono', monospace;
+            font-weight: 500;
+            font-size: 52px;
             line-height: 1;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             display: block;
+            letter-spacing: -0.02em;
         }
 
-        .stat-cell:nth-child(1) .stat-num {
-            color: var(--green);
-        }
-
-        .stat-cell:nth-child(2) .stat-num {
-            color: #7BA7FF;
-        }
-
-        .stat-cell:nth-child(3) .stat-num {
-            color: var(--green);
-        }
+        .stat-cell:nth-child(1) .stat-num { color: var(--green); }
+        .stat-cell:nth-child(2) .stat-num { color: #7BA7FF; }
+        .stat-cell:nth-child(3) .stat-num { color: var(--green); }
 
         .stat-desc {
-            font-family: 'DM Mono', monospace;
-            font-size: 11px;
-            letter-spacing: 0.12em;
-            color: var(--muted);
-            line-height: 1.5;
+            font-family: 'Inter', Arial, sans-serif;
+            font-size: 12px;
+            color: rgba(240, 242, 240, 0.6);
+            line-height: 1.35;
+            letter-spacing: 0;
         }
 
         /* ── BODY SECTION ITEMS ── */
@@ -1410,7 +1402,7 @@
             </div>
 
             <div class="highlight-box">
-                <p>Para nuestra generación, el acceso a la vivienda se ha convertido en uno de los obstáculos más
+                <p>Para la generación actual, el acceso a la vivienda se ha convertido en uno de los obstáculos más
                     determinantes para un proyecto de vida autónomo. Independizarse, formar un hogar o simplemente
                     habitar un espacio propio se ha transformado en un privilegio al alcance de pocos.</p>
             </div>
@@ -1424,19 +1416,19 @@
             <div class="stat-banner reveal">
                 <div class="stat-cell">
                     <span class="stat-num">+30</span>
-                    <span class="stat-desc">Años: edad media<br>de emancipación en España</span>
+                    <span class="stat-desc">Edad media de emancipación en España</span>
                 </div>
                 <div class="stat-cell">
                     <span class="stat-num">−18%</span>
-                    <span class="stat-desc">Caída de oferta<br>en Cataluña (ZMRT)</span>
+                    <span class="stat-desc">Caída de oferta en Cataluña con zonas tensionadas</span>
                 </div>
                 <div class="stat-cell">
                     <span class="stat-num">14</span>
-                    <span class="stat-desc">Años de ahorro íntegro<br>para pagar la entrada</span>
+                    <span class="stat-desc">Años de ahorro íntegro para pagar la entrada</span>
                 </div>
             </div>
 
-            <p>Nos encontramos ante un sistema que condena estructuralmente a nuestra generación: los precios de compra
+            <p>Nos encontramos ante un sistema que condena estructuralmente a la generación Z: los precios de compra
                 y alquiler han crecido muy por encima de los salarios medios para esa edad, la tasa de
                 propiedad entre menores de 35 años se ha desplomado en menos de una década, y la oferta de vivienda
                 protegida, pública o asequible, sigue siendo más que marginal en comparación con la media europea.</p>
@@ -1698,7 +1690,7 @@
 
                 <div class="pull-quote">
                     "La vivienda es hoy el principal mecanismo de desigualdad entre generaciones. Si no se corrige este
-                    modelo, nuestra generación será la primera en vivir peor que la anterior en términos de acceso a la
+                    modelo, la generación Z será la primera en vivir peor que la anterior en términos de acceso a la
                     vivienda."
                 </div>
 
