@@ -187,6 +187,82 @@
             color: var(--white);
         }
 
+        /* ── PDF BUTTON (COVER) ── */
+        .cover-pdf-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 40px;
+            padding: 13px 26px;
+            border: 1px solid var(--green);
+            color: var(--green);
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            text-decoration: none;
+            background: transparent;
+            transition: background 0.2s, color 0.2s;
+            animation: fadeUp 0.8s ease both;
+            animation-delay: 0.5s;
+        }
+
+        .cover-pdf-btn:hover {
+            background: var(--green);
+            color: var(--black);
+        }
+
+        .cover-pdf-btn svg {
+            flex-shrink: 0;
+            transition: fill 0.2s;
+        }
+
+        .cover-pdf-btn:hover svg {
+            fill: var(--black);
+        }
+
+        /* ── FAB PDF ── */
+        .fab-pdf {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            z-index: 100;
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 13px 20px;
+            background: var(--green);
+            color: var(--black);
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            text-decoration: none;
+            box-shadow: 0 6px 28px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: translateY(12px);
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s;
+        }
+
+        .fab-pdf.fab-visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .fab-pdf:hover {
+            background: #fff;
+        }
+
+        @media (max-width: 700px) {
+            .fab-pdf {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 16px;
+            }
+        }
+
         /* ── AUTHORS ── */
         .cover-authors {
             margin-top: 48px;
@@ -908,6 +984,13 @@
                     <li><a href="https://www.linkedin.com/in/d%C3%ADdac-s%C3%A1nchez-olaya-31a2641b1/" target="_blank" rel="noopener" class="author-link">Dídac Sánchez Olaya</a><span class="author-sep">/</span></li>
                 </ul>
             </div>
+            <a href="nota%20t%C3%A9cnica%20ZYNK.pdf" target="_blank" rel="noopener" class="cover-pdf-btn">
+                <svg width="14" height="16" viewBox="0 0 14 16" fill="var(--green)" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 0H2C0.9 0 0 0.9 0 2v12c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6L8 0zm0 1.5L12.5 6H8V1.5zM2 14V2h5v5h5v7H2z"/>
+                    <path d="M3.5 9h7v1h-7zM3.5 11h5v1h-5z"/>
+                </svg>
+                Leer nota técnica completa
+            </a>
         </div>
     </div>
 
@@ -1399,6 +1482,31 @@
             </div>
         </div>
     </footer>
+
+    <!-- FAB: acceso permanente al PDF -->
+    <a href="nota%20t%C3%A9cnica%20ZYNK.pdf" target="_blank" rel="noopener" class="fab-pdf" id="fabPdf" aria-label="Leer nota técnica en PDF">
+        <svg width="13" height="15" viewBox="0 0 14 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 0H2C0.9 0 0 0.9 0 2v12c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6L8 0zm0 1.5L12.5 6H8V1.5zM2 14V2h5v5h5v7H2z"/>
+            <path d="M3.5 9h7v1h-7zM3.5 11h5v1h-5z"/>
+        </svg>
+        PDF completo
+    </a>
+
+    <script>
+        (function () {
+            var fab = document.getElementById('fabPdf');
+            var cover = document.querySelector('.cover');
+            function onScroll() {
+                var threshold = cover ? cover.offsetHeight * 0.6 : 400;
+                if (window.scrollY > threshold) {
+                    fab.classList.add('fab-visible');
+                } else {
+                    fab.classList.remove('fab-visible');
+                }
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+        })();
+    </script>
 
 </body>
 
