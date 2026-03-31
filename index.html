@@ -855,24 +855,40 @@
         .stat-banner {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2px;
+            gap: 1px;
             margin: 40px 0;
+            background: var(--border);
         }
 
         .stat-cell {
             background: var(--black-card);
-            padding: 32px 24px;
-            text-align: center;
+            padding: 28px 24px 32px;
+            text-align: left;
+            border-top: 2px solid;
+        }
+
+        .stat-cell:nth-child(1) { border-top-color: var(--green); }
+        .stat-cell:nth-child(2) { border-top-color: #7BA7FF; }
+        .stat-cell:nth-child(3) { border-top-color: var(--green); }
+
+        .stat-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 9px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--muted);
+            display: block;
+            margin-bottom: 14px;
         }
 
         .stat-num {
             font-family: 'DM Mono', monospace;
             font-weight: 500;
-            font-size: 52px;
+            font-size: 56px;
             line-height: 1;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             display: block;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.03em;
         }
 
         .stat-cell:nth-child(1) .stat-num { color: var(--green); }
@@ -882,9 +898,8 @@
         .stat-desc {
             font-family: 'Inter', Arial, sans-serif;
             font-size: 12px;
-            color: rgba(240, 242, 240, 0.6);
-            line-height: 1.35;
-            letter-spacing: 0;
+            color: rgba(240, 242, 240, 0.45);
+            line-height: 1.3;
         }
 
         /* ── BODY SECTION ITEMS ── */
@@ -954,14 +969,15 @@
         }
 
         .prop-num-col {
-            background: var(--blue);
+            background: var(--green);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Syne', sans-serif;
-            font-weight: 800;
-            font-size: 36px;
-            color: rgba(255, 255, 255, 0.15);
+            font-family: 'DM Mono', monospace;
+            font-weight: 500;
+            font-size: 42px;
+            color: rgba(8, 10, 12, 0.3);
+            letter-spacing: -0.02em;
         }
 
         .prop-content {
@@ -980,7 +996,7 @@
 
         .prop-content h3 {
             font-size: 20px;
-            color: var(--white);
+            color: var(--blue-bright);
             margin-bottom: 14px;
         }
 
@@ -1415,16 +1431,19 @@
 
             <div class="stat-banner reveal">
                 <div class="stat-cell">
+                    <span class="stat-label">Emancipación</span>
                     <span class="stat-num">+30</span>
-                    <span class="stat-desc">Edad media de emancipación en España</span>
+                    <span class="stat-desc">años de media en España</span>
                 </div>
                 <div class="stat-cell">
+                    <span class="stat-label">Cataluña · ZMRT</span>
                     <span class="stat-num">−18%</span>
-                    <span class="stat-desc">Caída de oferta en Cataluña con zonas tensionadas</span>
+                    <span class="stat-desc">caída de oferta en zonas tensionadas</span>
                 </div>
                 <div class="stat-cell">
+                    <span class="stat-label">Barrera de entrada</span>
                     <span class="stat-num">14</span>
-                    <span class="stat-desc">Años de ahorro íntegro para pagar la entrada</span>
+                    <span class="stat-desc">años de ahorro íntegro para la entrada</span>
                 </div>
             </div>
 
