@@ -5,16 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La generación sin vivienda — ZYNK Nota Técnica</title>
-    <meta name="description" content="Diagnóstico, fallos estructurales y propuestas para ampliar el acceso juvenil a la vivienda en España.">
+    <meta name="description"
+        content="Diagnóstico, fallos estructurales y propuestas para ampliar el acceso juvenil a la vivienda en España.">
     <meta property="og:title" content="La generación sin vivienda — ZYNK Nota Técnica">
-    <meta property="og:description" content="Diagnóstico, fallos estructurales y propuestas para ampliar el acceso juvenil a la vivienda en España.">
+    <meta property="og:description"
+        content="Diagnóstico, fallos estructurales y propuestas para ampliar el acceso juvenil a la vivienda en España.">
     <meta property="og:type" content="article">
-    <meta property="og:image" content="assets/og-image.svg">
+    <meta property="og:image" content="assets/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="La generación sin vivienda — ZYNK Nota Técnica">
-    <meta name="twitter:description" content="Diagnóstico, fallos estructurales y propuestas para ampliar el acceso juvenil a la vivienda en España.">
-    <meta name="twitter:image" content="assets/og-image.svg">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+    <meta name="twitter:description"
+        content="Diagnóstico, fallos estructurales y propuestas para ampliar el acceso juvenil a la vivienda en España.">
+    <meta name="twitter:image" content="assets/og-image.png">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
     <link
         href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Inter:wght@300;400&display=swap"
         rel="stylesheet">
@@ -153,9 +157,17 @@
             transition: transform 0.25s, opacity 0.25s;
         }
 
-        .nav-burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-        .nav-burger.open span:nth-child(2) { opacity: 0; }
-        .nav-burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+        .nav-burger.open span:nth-child(1) {
+            transform: translateY(6.5px) rotate(45deg);
+        }
+
+        .nav-burger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-burger.open span:nth-child(3) {
+            transform: translateY(-6.5px) rotate(-45deg);
+        }
 
         .nav-mobile {
             display: none;
@@ -169,7 +181,9 @@
             padding: 20px 32px 24px;
         }
 
-        .nav-mobile.open { display: block; }
+        .nav-mobile.open {
+            display: block;
+        }
 
         .nav-mobile ul {
             list-style: none;
@@ -189,7 +203,9 @@
             transition: color 0.2s;
         }
 
-        .nav-mobile a:hover { color: var(--white); }
+        .nav-mobile a:hover {
+            color: var(--white);
+        }
 
         /* ── SCROLL INDICATOR ── */
         .scroll-indicator {
@@ -219,8 +235,15 @@
         }
 
         @keyframes scrollBounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(10px); }
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(10px);
+            }
         }
 
         /* ── REVEAL ON SCROLL ── */
@@ -236,7 +259,9 @@
         }
 
         /* ── SECTION H3 / PROPOSALS INTRO ── */
-        .proposals-intro { margin-bottom: 40px; }
+        .proposals-intro {
+            margin-bottom: 40px;
+        }
 
         .section-h3 {
             font-family: 'Syne', sans-serif;
@@ -1078,8 +1103,13 @@
 
         /* ── RESPONSIVE ── */
         @media (max-width: 700px) {
-            .nav-links { display: none; }
-            .nav-burger { display: flex; }
+            .nav-links {
+                display: none;
+            }
+
+            .nav-burger {
+                display: flex;
+            }
         }
 
         @media (max-width: 700px) {
@@ -1211,22 +1241,36 @@
             <div class="cover-authors">
                 <div class="authors-label">Autores</div>
                 <ul class="authors-list">
-                    <li><a href="https://www.linkedin.com/in/carla-mansanet-peinado-049b59311/" target="_blank" rel="noopener" class="author-link">Carla Mansanet Peinado</a><span class="author-sep">/</span></li>
-                    <li><a href="https://www.linkedin.com/in/adriangonzai/" target="_blank" rel="noopener" class="author-link">Adrián González Ortega</a><span class="author-sep">/</span></li>
-                    <li><a href="https://www.linkedin.com/in/carmen-moreno-udaondo/" target="_blank" rel="noopener" class="author-link">Carmen Moreno Udaondo</a><span class="author-sep">/</span></li>
-                    <li><a href="https://www.linkedin.com/in/teresaisocaleya/" target="_blank" rel="noopener" class="author-link">Teresa Iso Caleya</a><span class="author-sep">/</span></li>
-                    <li><a href="https://www.linkedin.com/in/laia-busquets-torres/" target="_blank" rel="noopener" class="author-link">Laia Busquets Torres</a><span class="author-sep">/</span></li>
-                    <li><a href="https://www.linkedin.com/in/anamoyanosolis/" target="_blank" rel="noopener" class="author-link">Ana Moyano Solís</a><span class="author-sep">/</span></li>
-                    <li><a href="https://www.linkedin.com/in/%C3%A1ngela-labiano-escudero/" target="_blank" rel="noopener" class="author-link">Ángela Labiano Escudero</a><span class="author-sep">/</span></li>
-                    <li><a href="https://www.linkedin.com/in/paula-mateo-hern%C3%A1ndez/" target="_blank" rel="noopener" class="author-link">Paula Mateo Hernández</a><span class="author-sep">/</span></li>
-                    <li><a href="https://www.linkedin.com/in/juanjoseherreravalenzuela/" target="_blank" rel="noopener" class="author-link">Juan Jose Herrera Valenzuela</a><span class="author-sep">/</span></li>
-                    <li><a href="https://www.linkedin.com/in/d%C3%ADdac-s%C3%A1nchez-olaya-31a2641b1/" target="_blank" rel="noopener" class="author-link">Dídac Sánchez Olaya</a><span class="author-sep">/</span></li>
+                    <li><a href="https://www.linkedin.com/in/carla-mansanet-peinado-049b59311/" target="_blank"
+                            rel="noopener" class="author-link">Carla Mansanet Peinado</a><span
+                            class="author-sep">/</span></li>
+                    <li><a href="https://www.linkedin.com/in/adriangonzai/" target="_blank" rel="noopener"
+                            class="author-link">Adrián González Ortega</a><span class="author-sep">/</span></li>
+                    <li><a href="https://www.linkedin.com/in/carmen-moreno-udaondo/" target="_blank" rel="noopener"
+                            class="author-link">Carmen Moreno Udaondo</a><span class="author-sep">/</span></li>
+                    <li><a href="https://www.linkedin.com/in/teresaisocaleya/" target="_blank" rel="noopener"
+                            class="author-link">Teresa Iso Caleya</a><span class="author-sep">/</span></li>
+                    <li><a href="https://www.linkedin.com/in/laia-busquets-torres/" target="_blank" rel="noopener"
+                            class="author-link">Laia Busquets Torres</a><span class="author-sep">/</span></li>
+                    <li><a href="https://www.linkedin.com/in/anamoyanosolis/" target="_blank" rel="noopener"
+                            class="author-link">Ana Moyano Solís</a><span class="author-sep">/</span></li>
+                    <li><a href="https://www.linkedin.com/in/%C3%A1ngela-labiano-escudero/" target="_blank"
+                            rel="noopener" class="author-link">Ángela Labiano Escudero</a><span
+                            class="author-sep">/</span></li>
+                    <li><a href="https://www.linkedin.com/in/paula-mateo-hern%C3%A1ndez/" target="_blank" rel="noopener"
+                            class="author-link">Paula Mateo Hernández</a><span class="author-sep">/</span></li>
+                    <li><a href="https://www.linkedin.com/in/juanjoseherreravalenzuela/" target="_blank" rel="noopener"
+                            class="author-link">Juan Jose Herrera Valenzuela</a><span class="author-sep">/</span></li>
+                    <li><a href="https://www.linkedin.com/in/d%C3%ADdac-s%C3%A1nchez-olaya-31a2641b1/" target="_blank"
+                            rel="noopener" class="author-link">Dídac Sánchez Olaya</a><span class="author-sep">/</span>
+                    </li>
                 </ul>
             </div>
             <a href="nota-tecnica-zynk.pdf" target="_blank" rel="noopener" class="cover-pdf-btn">
                 <svg width="14" height="16" viewBox="0 0 14 16" fill="var(--green)" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8 0H2C0.9 0 0 0.9 0 2v12c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6L8 0zm0 1.5L12.5 6H8V1.5zM2 14V2h5v5h5v7H2z"/>
-                    <path d="M3.5 9h7v1h-7zM3.5 11h5v1h-5z"/>
+                    <path
+                        d="M8 0H2C0.9 0 0 0.9 0 2v12c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6L8 0zm0 1.5L12.5 6H8V1.5zM2 14V2h5v5h5v7H2z" />
+                    <path d="M3.5 9h7v1h-7zM3.5 11h5v1h-5z" />
                 </svg>
                 Leer nota técnica completa
             </a>
@@ -1457,7 +1501,8 @@
                 <ul class="styled-list">
                     <li>Fijación del precio máximo de renta en los nuevos contratos de vivienda habitual donde en los
                         cinco años previos existía un arrendamiento. La renta inicial no podrá exceder la última renta
-                        pagada por el contrato anterior, sin permitir el traslado de gastos no previstos anteriormente.</li>
+                        pagada por el contrato anterior, sin permitir el traslado de gastos no previstos anteriormente.
+                    </li>
                     <li>El precio de las rentas del propietario gran tenedor quedará limitado por el Índice de
                         referencia de Precios de Alquiler, beneficiando al propietario individual.</li>
                 </ul>
@@ -1699,21 +1744,23 @@
     </footer>
 
     <!-- FAB: acceso permanente al PDF -->
-    <a href="nota-tecnica-zynk.pdf" target="_blank" rel="noopener" class="fab-pdf" id="fabPdf" aria-label="Leer nota técnica en PDF">
+    <a href="nota-tecnica-zynk.pdf" target="_blank" rel="noopener" class="fab-pdf" id="fabPdf"
+        aria-label="Leer nota técnica en PDF">
         <svg width="13" height="15" viewBox="0 0 14 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M8 0H2C0.9 0 0 0.9 0 2v12c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6L8 0zm0 1.5L12.5 6H8V1.5zM2 14V2h5v5h5v7H2z"/>
-            <path d="M3.5 9h7v1h-7zM3.5 11h5v1h-5z"/>
+            <path
+                d="M8 0H2C0.9 0 0 0.9 0 2v12c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6L8 0zm0 1.5L12.5 6H8V1.5zM2 14V2h5v5h5v7H2z" />
+            <path d="M3.5 9h7v1h-7zM3.5 11h5v1h-5z" />
         </svg>
         PDF completo
     </a>
 
     <script>
         (function () {
-            var navbar  = document.getElementById('navbar');
-            var fab     = document.getElementById('fabPdf');
-            var burger  = document.getElementById('navBurger');
-            var mobile  = document.getElementById('navMobile');
-            var cover   = document.querySelector('.cover');
+            var navbar = document.getElementById('navbar');
+            var fab = document.getElementById('fabPdf');
+            var burger = document.getElementById('navBurger');
+            var mobile = document.getElementById('navMobile');
+            var cover = document.querySelector('.cover');
             var sections = document.querySelectorAll('section[id]');
             var navAnchors = document.querySelectorAll('.nav-links a, .nav-mobile a');
 
