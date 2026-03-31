@@ -187,6 +187,55 @@
             color: var(--white);
         }
 
+        /* ── AUTHORS ── */
+        .cover-authors {
+            margin-top: 48px;
+            padding-top: 28px;
+            border-top: 1px solid var(--border);
+        }
+
+        .authors-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.18em;
+            color: var(--muted);
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .authors-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 0;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .author-link {
+            font-family: 'Syne', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .author-link:hover {
+            color: var(--green);
+        }
+
+        .author-sep {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: var(--border);
+            margin: 0 10px;
+        }
+
+        .authors-list li:last-child .author-sep {
+            display: none;
+        }
+
         /* ── SECTION ── */
         section {
             padding: 80px 0;
@@ -789,7 +838,8 @@
         .cover-label,
         .cover-title,
         .cover-subtitle,
-        .cover-meta {
+        .cover-meta,
+        .cover-authors {
             animation: fadeUp 0.8s ease both;
         }
 
@@ -803,6 +853,10 @@
 
         .cover-meta {
             animation-delay: 0.3s;
+        }
+
+        .cover-authors {
+            animation-delay: 0.4s;
         }
     </style>
 </head>
@@ -838,6 +892,21 @@
                     <span class="meta-label">Ámbito</span>
                     <span class="meta-value">España</span>
                 </div>
+            </div>
+            <div class="cover-authors">
+                <div class="authors-label">Autores</div>
+                <ul class="authors-list">
+                    <li><a href="https://www.linkedin.com/in/carla-mansanet-peinado-049b59311/" target="_blank" rel="noopener" class="author-link">Carla Mansanet Peinado</a><span class="author-sep">/</span></li>
+                    <li><a href="https://www.linkedin.com/in/adriangonzai/" target="_blank" rel="noopener" class="author-link">Adrián González Ortega</a><span class="author-sep">/</span></li>
+                    <li><a href="https://www.linkedin.com/in/carmen-moreno-udaondo/" target="_blank" rel="noopener" class="author-link">Carmen Moreno Udaondo</a><span class="author-sep">/</span></li>
+                    <li><a href="https://www.linkedin.com/in/teresaisocaleya/" target="_blank" rel="noopener" class="author-link">Teresa Iso Caleya</a><span class="author-sep">/</span></li>
+                    <li><a href="https://www.linkedin.com/in/laia-busquets-torres/" target="_blank" rel="noopener" class="author-link">Laia Busquets Torres</a><span class="author-sep">/</span></li>
+                    <li><a href="https://www.linkedin.com/in/anamoyanosolis/" target="_blank" rel="noopener" class="author-link">Ana Moyano Solís</a><span class="author-sep">/</span></li>
+                    <li><a href="https://www.linkedin.com/in/%C3%A1ngela-labiano-escudero/" target="_blank" rel="noopener" class="author-link">Ángela Labiano Escudero</a><span class="author-sep">/</span></li>
+                    <li><a href="https://www.linkedin.com/in/paula-mateo-hern%C3%A1ndez/" target="_blank" rel="noopener" class="author-link">Paula Mateo Hernández</a><span class="author-sep">/</span></li>
+                    <li><a href="https://www.linkedin.com/in/juanjoseherreravalenzuela/" target="_blank" rel="noopener" class="author-link">Juan Jose Herrera Valenzuela</a><span class="author-sep">/</span></li>
+                    <li><a href="https://www.linkedin.com/in/d%C3%ADdac-s%C3%A1nchez-olaya-31a2641b1/" target="_blank" rel="noopener" class="author-link">Dídac Sánchez Olaya</a><span class="author-sep">/</span></li>
+                </ul>
             </div>
         </div>
     </div>
