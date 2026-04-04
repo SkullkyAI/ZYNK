@@ -867,9 +867,17 @@
             border-top: 2px solid;
         }
 
-        .stat-cell:nth-child(1) { border-top-color: var(--green); }
-        .stat-cell:nth-child(2) { border-top-color: #7BA7FF; }
-        .stat-cell:nth-child(3) { border-top-color: var(--green); }
+        .stat-cell:nth-child(1) {
+            border-top-color: var(--green);
+        }
+
+        .stat-cell:nth-child(2) {
+            border-top-color: #7BA7FF;
+        }
+
+        .stat-cell:nth-child(3) {
+            border-top-color: var(--green);
+        }
 
         .stat-label {
             font-family: 'DM Mono', monospace;
@@ -891,9 +899,17 @@
             letter-spacing: -0.03em;
         }
 
-        .stat-cell:nth-child(1) .stat-num { color: var(--green); }
-        .stat-cell:nth-child(2) .stat-num { color: #7BA7FF; }
-        .stat-cell:nth-child(3) .stat-num { color: var(--green); }
+        .stat-cell:nth-child(1) .stat-num {
+            color: var(--green);
+        }
+
+        .stat-cell:nth-child(2) .stat-num {
+            color: #7BA7FF;
+        }
+
+        .stat-cell:nth-child(3) .stat-num {
+            color: var(--green);
+        }
 
         .stat-desc {
             font-family: 'Inter', Arial, sans-serif;
@@ -1180,6 +1196,193 @@
         .cover-authors {
             animation-delay: 0.4s;
         }
+
+        /* ── PDF GATE MODAL ── */
+        .pdf-gate-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(8, 10, 12, 0.88);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+
+        .pdf-gate-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .pdf-gate-card {
+            background: var(--black-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            padding: 40px;
+            max-width: 420px;
+            width: 100%;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.25s ease;
+        }
+
+        .pdf-gate-overlay.open .pdf-gate-card {
+            transform: translateY(0);
+        }
+
+        .pdf-gate-tag {
+            display: inline-block;
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--green);
+            background: var(--green-dim);
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-bottom: 18px;
+        }
+
+        .pdf-gate-card h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .pdf-gate-card .pdf-gate-desc {
+            font-size: 14px;
+            color: var(--muted);
+            margin-bottom: 28px;
+            line-height: 1.65;
+        }
+
+        .pdf-gate-field {
+            margin-bottom: 16px;
+        }
+
+        .pdf-gate-field label {
+            display: block;
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+
+        .pdf-gate-field input,
+        .pdf-gate-field select {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px 14px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: var(--white);
+            outline: none;
+            transition: border-color 0.2s, background 0.2s;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .pdf-gate-field select {
+            background-image: url("data:image/svg+xml,%3Csvg width='12' height='7' viewBox='0 0 12 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            background-color: rgba(255, 255, 255, 0.04);
+            padding-right: 36px;
+            cursor: pointer;
+        }
+
+        .pdf-gate-field select option {
+            background: var(--black-card);
+            color: var(--white);
+        }
+
+        .pdf-gate-field input:focus,
+        .pdf-gate-field select:focus {
+            border-color: rgba(182, 255, 71, 0.45);
+            background: rgba(182, 255, 71, 0.03);
+        }
+
+        .pdf-gate-field input::placeholder {
+            color: rgba(107, 114, 128, 0.6);
+        }
+
+        .pdf-gate-submit {
+            width: 100%;
+            margin-top: 10px;
+            padding: 14px;
+            background: var(--green);
+            color: var(--black);
+            border: none;
+            border-radius: 8px;
+            font-family: 'Syne', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s, opacity 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .pdf-gate-submit:hover {
+            background: #c8ff6a;
+        }
+
+        .pdf-gate-submit:active {
+            transform: scale(0.98);
+        }
+
+        .pdf-gate-submit.loading {
+            opacity: 0.65;
+            pointer-events: none;
+        }
+
+        .pdf-gate-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: var(--muted);
+            font-size: 16px;
+            cursor: pointer;
+            padding: 6px 10px;
+            line-height: 1;
+            transition: color 0.2s;
+            border-radius: 4px;
+        }
+
+        .pdf-gate-close:hover {
+            color: var(--white);
+        }
+
+        .pdf-gate-privacy {
+            margin-top: 16px;
+            text-align: center;
+            font-size: 11px;
+            color: rgba(107, 114, 128, 0.6);
+            font-family: 'DM Mono', monospace;
+            letter-spacing: 0.04em;
+        }
+
+        @media (max-width: 480px) {
+            .pdf-gate-card {
+                padding: 28px 22px;
+            }
+        }
     </style>
 </head>
 
@@ -1278,7 +1481,7 @@
                     </li>
                 </ul>
             </div>
-            <a href="nota-tecnica-zynk.pdf" target="_blank" rel="noopener" class="cover-pdf-btn">
+            <a href="nota-tecnica-zynk.pdf" target="_blank" rel="noopener" class="cover-pdf-btn" data-pdf-gate>
                 <svg width="14" height="16" viewBox="0 0 14 16" fill="var(--green)" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M8 0H2C0.9 0 0 0.9 0 2v12c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6L8 0zm0 1.5L12.5 6H8V1.5zM2 14V2h5v5h5v7H2z" />
@@ -1758,9 +1961,51 @@
         </div>
     </footer>
 
+    <!-- PDF Gate Modal -->
+    <div class="pdf-gate-overlay" id="pdfGate" role="dialog" aria-modal="true" aria-labelledby="pdfGateTitle">
+        <div class="pdf-gate-card">
+            <button class="pdf-gate-close" id="pdfGateClose" aria-label="Cerrar">✕</button>
+            <span class="pdf-gate-tag">Nota Técnica ZYNK 2026</span>
+            <h3 id="pdfGateTitle">Descarga la nota técnica</h3>
+            <p class="pdf-gate-desc">Déjanos tu contacto para poder informarte de futuras publicaciones e
+                investigaciones de ZYNK sobre vivienda y política pública.</p>
+            <form id="pdfGateForm">
+                <div class="pdf-gate-field">
+                    <label for="gateEmail">Correo electrónico</label>
+                    <input type="email" id="gateEmail" name="email" required placeholder="tu@correo.com"
+                        autocomplete="email">
+                </div>
+                <div class="pdf-gate-field">
+                    <label for="gatePerfil">¿Cuál es tu perfil?</label>
+                    <select id="gatePerfil" name="perfil" required>
+                        <option value="" disabled selected>Selecciona tu perfil</option>
+                        <option value="investigador">Investigador/a o académico/a</option>
+                        <option value="periodista">Periodista o comunicador/a</option>
+                        <option value="tecnico-publico">Técnico/a de la administración pública</option>
+                        <option value="politico">Político/a o cargo electo</option>
+                        <option value="inmobiliario">Profesional del sector inmobiliario</option>
+                        <option value="joven">Joven interesado/a en la problemática</option>
+                        <option value="estudiante">Estudiante</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+                <button type="submit" class="pdf-gate-submit" id="pdfGateSubmit">
+                    <svg width="13" height="15" viewBox="0 0 14 16" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M8 0H2C0.9 0 0 0.9 0 2v12c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6L8 0zm0 1.5L12.5 6H8V1.5zM2 14V2h5v5h5v7H2z" />
+                        <path d="M3.5 9h7v1h-7zM3.5 11h5v1h-5z" />
+                    </svg>
+                    Descargar nota técnica
+                </button>
+            </form>
+            <p class="pdf-gate-privacy">Tus datos no se compartirán con terceros.</p>
+        </div>
+    </div>
+
     <!-- FAB: acceso permanente al PDF -->
     <a href="nota-tecnica-zynk.pdf" target="_blank" rel="noopener" class="fab-pdf" id="fabPdf"
-        aria-label="Leer nota técnica en PDF">
+        aria-label="Leer nota técnica en PDF" data-pdf-gate>
         <svg width="13" height="15" viewBox="0 0 14 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M8 0H2C0.9 0 0 0.9 0 2v12c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6L8 0zm0 1.5L12.5 6H8V1.5zM2 14V2h5v5h5v7H2z" />
@@ -1807,6 +2052,64 @@
                     burger.classList.remove('open');
                     mobile.classList.remove('open');
                 });
+            });
+
+            // ── PDF Gate ──
+            // Crea tu formulario en https://formspree.io/ (gratis) y pega aquí tu endpoint
+            var FORM_ENDPOINT = 'https://formspree.io/f/xlgoonaa';
+            var PDF_URL = 'nota-tecnica-zynk.pdf';
+
+            var gate = document.getElementById('pdfGate');
+            var gateForm = document.getElementById('pdfGateForm');
+            var gateClose = document.getElementById('pdfGateClose');
+            var gateSubmit = document.getElementById('pdfGateSubmit');
+
+            function openGate() {
+                gate.classList.add('open');
+                document.body.style.overflow = 'hidden';
+                setTimeout(function () { document.getElementById('gateEmail').focus(); }, 50);
+            }
+
+            function closeGate() {
+                gate.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+
+            document.querySelectorAll('[data-pdf-gate]').forEach(function (el) {
+                el.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    openGate();
+                });
+            });
+
+            gate.addEventListener('click', function (e) {
+                if (e.target === gate) closeGate();
+            });
+
+            gateClose.addEventListener('click', closeGate);
+
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && gate.classList.contains('open')) closeGate();
+            });
+
+            gateForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                gateSubmit.classList.add('loading');
+                gateSubmit.innerHTML = 'Abriendo&hellip;';
+
+                fetch(FORM_ENDPOINT, {
+                    method: 'POST',
+                    body: new FormData(gateForm),
+                    headers: { 'Accept': 'application/json' }
+                })
+                    .catch(function () { /* no bloquear el PDF si falla el envío */ })
+                    .finally(function () {
+                        window.open(PDF_URL, '_blank', 'noopener');
+                        closeGate();
+                        gateForm.reset();
+                        gateSubmit.classList.remove('loading');
+                        gateSubmit.innerHTML = '<svg width="13" height="15" viewBox="0 0 14 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M8 0H2C0.9 0 0 0.9 0 2v12c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6L8 0zm0 1.5L12.5 6H8V1.5zM2 14V2h5v5h5v7H2z"/><path d="M3.5 9h7v1h-7zM3.5 11h5v1h-5z"/></svg> Descargar nota técnica';
+                    });
             });
 
             // Reveal on scroll
