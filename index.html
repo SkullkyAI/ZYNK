@@ -2060,8 +2060,7 @@
             });
 
             // ── PDF Gate ──
-            // Crea tu formulario en https://formspree.io/ (gratis) y pega aquí tu endpoint
-            var FORM_ENDPOINT = 'https://formspree.io/f/xlgoonaa';
+            var FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxp8SdsorgVKWa6FXGqIZJtrD1BXyhti3dzoTFI990-c58i1mgziLsfXO_rMES22Lak/exec';
             var PDF_URL = 'nota-tecnica-zynk.pdf';
 
             var gate = document.getElementById('pdfGate');
@@ -2104,8 +2103,12 @@
 
                 fetch(FORM_ENDPOINT, {
                     method: 'POST',
-                    body: new FormData(gateForm),
-                    headers: { 'Accept': 'application/json' }
+                    body: JSON.stringify({
+                        email: document.getElementById('gateEmail').value,
+                        perfil: document.getElementById('gatePerfil').value
+                    }),
+                    headers: { 'Content-Type': 'application/json' },
+                    mode: 'no-cors'
                 })
                     .catch(function () { /* no bloquear el PDF si falla el envío */ })
                     .finally(function () {
